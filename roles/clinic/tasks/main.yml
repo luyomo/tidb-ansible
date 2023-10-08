@@ -1,0 +1,5 @@
+---
+# tasks file for clinic
+
+- name: create config file
+  template: src=meta.yaml.j2 dest="{{ lookup('env','HOME') }}/.tiup/storage/cluster/clusters/{{ cluster_name }}/meta.yaml" mode=0644 backup=yes

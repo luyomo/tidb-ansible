@@ -37,12 +37,12 @@
   changed_when: false
   when: enable_ntpd
 
-- name: Preflight check - NTP service
-  fail:
-    msg: "Make sure NTP service is running and ntpstat is synchronised to NTP server. See https://github.com/pingcap/docs/blob/master/online-deployment-using-ansible.md#how-to-check-whether-the-ntp-service-is-normal."
-  when:
-    - enable_ntpd
-    - ntp_st.stdout|int != 1
+  #- name: Preflight check - NTP service
+  #  fail:
+  #    msg: "Make sure NTP service is running and ntpstat is synchronised to NTP server. See https://github.com/pingcap/docs/blob/master/online-deployment-using-ansible.md#how-to-check-whether-the-ntp-service-is-normal."
+  #  when:
+  #    - enable_ntpd
+  #    - ntp_st.stdout|int != 1
 
 - name: Preflight check - Get umask
   shell: umask

@@ -3,15 +3,18 @@
 - hosts: all
   tasks:
     - name: create user
+      become: yes
       user: name={{ username }} shell=/bin/bash createhome=yes
 
     - name: set authorized key
+      become: yes
       authorized_key:
         user: "{{ username }}"
         key: "{{ lookup('file', lookup('env','HOME')+ '/.ssh/id_rsa.pub') }}"
         state: present
 
     - name: update sudoers file
+      become: yes
       lineinfile:
         dest: /etc/sudoers
         insertafter: EOF
